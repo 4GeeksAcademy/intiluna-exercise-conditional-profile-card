@@ -26,6 +26,13 @@ function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
+
+  if (variables.backgroundImage === null) {
+    variables.background = variables.background;
+  } else {
+    variables.background = variables.backgroundImage;
+  }
+
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
@@ -45,6 +52,7 @@ function render(variables = {}) {
   let linkedinColor;
   let twitterColor;
   let instagramColor;
+  let backGroundColor;
 
   if (
     variables.github === null ||
@@ -87,6 +95,9 @@ function render(variables = {}) {
     twitterColor = "icon-green";
   }
 
+  //images for background
+  //https://images.unsplash.com/photo-1685689238460-fdd76e602962?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80
+
   //test links https://www.linkedin.com/in/inti-luna-aviles-8a55998/
   // https://github.com/intiluna/
   //https://twitter.com/AEK_eus
@@ -94,7 +105,9 @@ function render(variables = {}) {
 
   // reset the website body with the new html output
   // default Lucy Boilett
-  document.querySelector("#widget_content").innerHTML = `<div class="widget">
+  document.querySelector(
+    "#widget_content"
+  ).innerHTML = `<div class="widget ${variables.coverBackground}">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           <h1>${variables.name} ${variables.lastname}</h1>
@@ -118,7 +131,9 @@ window.onload = function() {
     // if includeCover is true the algorithm should
     includeCover: true,
     // this is the url of the image that will used as background for the profile cover
+    //background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
+    backgroundImage: null,
     // this is the url for the profile avatar
     avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
     // social media bar position (left or right)

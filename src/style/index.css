@@ -107,3 +107,23 @@
 .icon-red {
   background: red;
 }
+
+.my-bg-red {
+  background: rgb(235, 213, 213);
+}
+
+.my-bg-white {
+  background: white;
+}
+
+.my-bg-green {
+  background: rgb(205, 238, 205);
+}
+
+.my-bg-blue {
+  background: rgb(205, 205, 238);
+}
+
+.my-bg-grey {
+  background: rgb(228, 228, 228);
+}
