@@ -100,3 +100,10 @@
   border: none;
   border-radius: 0 0 3px 0;
 }
+
+.icon-green {
+  background: green;
+}
+.icon-red {
+  background: red;
+}

@@ -29,26 +29,63 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
-  if (variables.name !== null) {
-    variables.lastname = "";
-  } else if (variables.lastname === null) {
-    variables.lastname = "Boilett";
-  }
+  // if (variables.name !== null) {
+  //   variables.lastname = "";
+  // } else if (variables.lastname === null) {
+  //   variables.lastname = "Boilett";
+  // }
+
+  if (variables.lastname === null) variables.lastname = "Boilett";
   if (variables.name === null) variables.name = "Lucy";
   if (variables.role === null) variables.role = "Please select your role";
   if (variables.city === null) variables.city = "Select your city";
   if (variables.country === null) variables.country = "Select your country";
-  if (variables.twitter === null)
-    variables.twitter = "https://twitter.com/4geeksacademy";
 
-  if (variables.github === null)
+  let githubColor;
+  let linkedinColor;
+  let twitterColor;
+  let instagramColor;
+
+  if (
+    variables.github === null ||
+    variables.github === "alesanchezr" ||
+    variables.github === "https://github.com/4GeeksAcademy"
+  ) {
+    githubColor = "icon-red";
     variables.github = "https://github.com/4GeeksAcademy";
+  } else {
+    githubColor = "icon-green";
+  }
 
-  if (variables.linkedin === null)
+  if (
+    variables.linkedin === null ||
+    variables.linkedin === "https://linkedin.com/4GeeksAcademy"
+  ) {
+    linkedinColor = "icon-red";
     variables.linkedin = "https://linkedin.com/4GeeksAcademy";
+  } else {
+    linkedinColor = "icon-green";
+  }
 
-  if (variables.instagram === null)
+  if (
+    variables.instagram === null ||
+    variables.instagram === "https://instagram.com/4geeksacademy"
+  ) {
+    instagramColor = "icon-red";
     variables.instagram = "https://instagram.com/4geeksacademy";
+  } else {
+    instagramColor = "icon-green";
+  }
+
+  if (
+    variables.twitter === null ||
+    variables.twitter === "https://twitter.com/4geeksacademy"
+  ) {
+    twitterColor = "icon-red";
+    variables.twitter = "https://twitter.com/4geeksacademy";
+  } else {
+    twitterColor = "icon-green";
+  }
 
   //test links https://www.linkedin.com/in/inti-luna-aviles-8a55998/
   // https://github.com/intiluna/
@@ -64,10 +101,10 @@ function render(variables = {}) {
           <h2>${variables.role}</h2>
           <h3>${variables.city}, ${variables.country}</h3>
           <ul class=${variables.socialMediaPosition}>
-            <li><a href=${variables.twitter}><i class="fab fa-twitter"></i></a></li>
-            <li><a href=${variables.github}><i class="fab fa-github"></i></a></li>
-            <li><a href=${variables.linkedin}><i class="fab fa-linkedin"></i></a></li>
-            <li><a href=${variables.instagram}><i class="fab fa-instagram"></i></a></li>
+            <li><a href=${variables.twitter}><i class="fab fa-twitter ${twitterColor}"></i></a></li>
+            <li><a href=${variables.github}><i class="fab fa-github ${githubColor}"></i></a></li>
+            <li><a href=${variables.linkedin}><i class="fab fa-linkedin ${linkedinColor}"></i></a></li>
+            <li><a href=${variables.instagram}><i class="fab fa-instagram ${instagramColor}"></i></a></li>
           </ul>
         </div>
     `;
