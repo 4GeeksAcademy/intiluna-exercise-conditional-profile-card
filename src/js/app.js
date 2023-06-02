@@ -27,10 +27,12 @@ function render(variables = {}) {
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
 
-  if (variables.backgroundImage === null) {
-    variables.background = variables.background;
-  } else {
+  if (variables.backgroundImage !== null) {
     variables.background = variables.backgroundImage;
+  }
+
+  if (variables.avatarImage !== null) {
+    variables.avatarURL = variables.avatarImage;
   }
 
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
@@ -136,6 +138,7 @@ window.onload = function() {
     backgroundImage: null,
     // this is the url for the profile avatar
     avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarImage: null,
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
